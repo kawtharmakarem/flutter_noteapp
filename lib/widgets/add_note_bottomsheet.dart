@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_noteapp/widgets/custom_button.dart';
-import 'package:flutter_noteapp/widgets/custom_textfield.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_noteapp/cubits/addnotes_cubit/cubit/add_notes_cubit.dart';
+import 'package:flutter_noteapp/widgets/add_note_form.dart';
 
 class AddNoteButtomSheet extends StatelessWidget {
   const AddNoteButtomSheet({super.key});
@@ -10,16 +11,13 @@ class AddNoteButtomSheet extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16),
       child: SingleChildScrollView(
-        child: Column(
-          children: [
-            const SizedBox(height: 32,),
-            CustomTextField(hintText: 'Title',),
-            const SizedBox(height: 16,),
-            CustomTextField(hintText: 'Content',maxLines: 5,),
-            const SizedBox(height: 32,),
-            CustomButton(),
-            const SizedBox(height: 16,)
-          ],
+        child: BlocConsumer<AddNotesCubit,AddNotesState>(
+          listener: (context, state) {
+            // TODO: implement listener
+          },
+          builder: (context, state) {
+            return AddNoteForm();
+          },
         ),
       ),
     );
